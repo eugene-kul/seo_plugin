@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'Seo (Sitemap/Robots/Open Graph)',
+        'name' => 'SEO (Sitemap/Robots/Open Graph)',
         'description' => 'Plugin for SEO markup and generation Sitemap.xml and Robots.txt'
     ],
 

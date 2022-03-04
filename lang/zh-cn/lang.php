@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'Seo(Sitemap/Robots/Open Graph)',
+        'name' => 'SEO (Sitemap/Robots/Open Graph)',
         'description' => '用于 SEO 标记和生成 Sitemap.xml 和 Robots.txt 的插件',
     ],
 
