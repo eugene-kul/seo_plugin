@@ -30,6 +30,28 @@ canonical_url:
   tab: Meta
   span: full
 
+robot_index:
+    label: robots index
+    type: balloon-selector
+    tab: Meta
+    options:
+        index: index
+        noindex: noindex
+    comment: eugene3993.seo::lang.config.index
+    span: left
+    default: index
+
+robot_follow :
+    label   : robots follow
+    type    : balloon-selector
+    tab: Meta
+    options :
+        follow: follow
+        nofollow: nofollow
+    comment : eugene3993.seo::lang.config.follow
+    span    : right
+    default : follow
+
 use_in_sitemap:
   label: eugene3993.seo::lang.config.use_in_sitemap
   default: false

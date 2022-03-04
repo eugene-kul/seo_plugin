@@ -1,16 +1,26 @@
 {% set self = __SELF__ %}
 {% set settings = __SELF__.settings %}
+{% set robots = [viewBag.robot_index, viewBag.robot_follow] %}
 <!-- EUGENE3993.SEO -->
 
 <!-- META -->
-<title>{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}</title>
+<title>
+	{{- settings.site_name and settings.site_name_position == 'prefix' ? settings.site_name~' '~settings.site_name_separator~' ':'' -}}
+	{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}
+	{{- settings.site_name and settings.site_name_position == 'suffix' ? ' '~settings.site_name_separator~' '~settings.site_name -}}
+</title>
 <meta name="description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
 {% if settings.use_canonical %}
 	<link rel="canonical" href="{{ include(template_from_string(viewBag.canonical_url))|default(this.page.id)|page }}">
 {% endif %}
 
-<!-- Open Graph -->
+{%- if settings.enable_robots_meta and (viewBag.robot_index!='index' or viewBag.robot_follow!='follow') %}
+<!-- Meta Robots tag -->
+<meta name="robots" content="{{ robots|join(', ') }}" />
+{% endif %}
+
 {% if settings.enable_og %}
+<!-- Open Graph -->
 	<meta property="og:type" content="{{ include(template_from_string(viewBag.og_type))  ?: 'website' }}" />
 	<meta property="og:title" content="{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}" />
 	<meta property="og:description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
@@ -35,8 +45,8 @@
 	{% endif %}
 {% endif %}
 
-<!-- Extra meta -->
 {% if settings.extra_meta %}
+<!-- Extra meta -->
 	{{ settings.extra_meta | raw }}
 {% endif %}
 <!-- EUGENE3993.SEO -->

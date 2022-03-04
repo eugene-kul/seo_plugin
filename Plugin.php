@@ -92,6 +92,8 @@ class Plugin extends PluginBase {
                     "meta_title",
                     "meta_description",
                     "canonical_url",
+                    "robot_index",
+                    "robot_follow",
                 ] : [],
             )
         );

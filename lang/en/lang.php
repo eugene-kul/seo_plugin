@@ -8,6 +8,8 @@
         'description' => 'Configure sitemap.xml and robots.txt',
         'meta_title' => 'META title',
         'meta_description' => 'META description',
+        'index' => 'Specify whether search engines should index this page',
+        'follow' => 'Specify whether search engines should follow the links on this page',
         'use_in_sitemap' => 'Enable in the Sitemap.xml',
         'model_class' => [
             'label' => 'Associate this page with a model links will be generated from it\s records',
@@ -30,8 +32,20 @@
     ],
 
     'settings' => [
+        'enable_robots_txt' => 'Use Robots.txt',
+        'enable_robots_meta' => 'Use robots meta tags',
         'enable_sitemap' => 'Use sitemap.xml',
         'use_canonical' => 'Use the Canonical tag',
+        'site_name' => [
+            'label' => 'Name of the site/organization',
+            'label_pos' => 'Display the site name',
+            'prefix_pos' => 'At the start of the title',
+            'suffix_pos' => 'At the end of the title',
+            'nowhere_pos' => 'Disable',
+            'comment_pos' => 'Choose how the site name should be displayed in the Title header',
+            'separator' => 'Site name separator',
+            'separator_comment' => 'A symbol to separate the site name from the title, for example: Page Title | SiteName',
+        ],
         'stock_description' => [
             'label' => 'Universal Meta tag description',
             'comment' => 'Used if the description meta tag is not filled in for the page',

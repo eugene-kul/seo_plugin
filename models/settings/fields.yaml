@@ -12,6 +12,29 @@ tabs:
             span: auto
             type: switch
             default: false
+        site_name:
+            label: 'eugene3993.seo::lang.settings.site_name.label'
+            span: left
+            type: text
+            tab: Settings
+        site_name_position:
+            label: 'eugene3993.seo::lang.settings.site_name.label_pos'
+            options:
+                null: 'eugene3993.seo::lang.settings.site_name.nowhere_pos'
+                prefix: 'eugene3993.seo::lang.settings.site_name.prefix_pos'
+                suffix: 'eugene3993.seo::lang.settings.site_name.suffix_pos'
+            span: auto
+            type: radio
+            commentAbove: 'eugene3993.seo::lang.settings.site_name.comment_pos'
+            tab: Settings
+        site_name_separator:
+            label: 'eugene3993.seo::lang.settings.site_name.separator'
+            span: auto
+            type: text
+            max: 1
+            comment: 'eugene3993.seo::lang.settings.site_name.separator_comment'
+            placeholder: '|'
+            tab: Settings
         stock_description:
             tab: Settings
             label: 'eugene3993.seo::lang.settings.stock_description.label'
@@ -22,6 +45,12 @@ tabs:
         enable_robots_txt:
             tab: Robots.txt
             label: 'eugene3993.seo::lang.settings.enable_robots_txt'
+            span: auto
+            type: switch
+            default: false
+        enable_robots_meta:
+            tab: Robots.txt
+            label: 'eugene3993.seo::lang.settings.enable_robots_meta'
             span: auto
             type: switch
             default: false
@@ -37,6 +66,15 @@ tabs:
                 condition: checked
             type: codeeditor
             default: "User-agent: *\r\nAllow: /\r\r\nSitemap: $domain/sitemap.xml"
+        link_block:
+            tab: Robots.txt
+            type: partial
+            path: $/eugene3993/seo/models/settings/_html.htm
+            span: auto
+            trigger:
+                action: show
+                field: enable_robots_txt
+                condition: checked
         extra_meta:
             label: 'eugene3993.seo::lang.settings.extra_meta'
             size: huge
