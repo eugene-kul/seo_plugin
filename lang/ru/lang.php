@@ -23,7 +23,7 @@
 
     'permissions' => [
         'labels' => [
-            'sitemap' => 'Вкладка Sitemap и Open Graph',
+            'sitemap' => 'Вкладки Sitemap и Open Graph',
             'meta' => 'Вкладка Meta',
             'settings' => 'Настройки плагина',
         ]
