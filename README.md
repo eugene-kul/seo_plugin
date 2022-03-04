@@ -2,6 +2,8 @@
 
 The plugin adds functionality to Standard Meta tags and generates Sitemap and Robots files.
 
+> It supports **CMS Pages**, **Static Pages** and **Builder's pages records**.
+
 Functionality:
 
 - generation of meta tags (title, description, canonical)
