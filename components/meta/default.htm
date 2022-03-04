@@ -1,0 +1,42 @@
+{% set self = __SELF__ %}
+{% set settings = __SELF__.settings %}
+<!-- EUGENE3993.SEO -->
+
+<!-- META -->
+<title>{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}</title>
+<meta name="description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
+{% if settings.use_canonical %}
+	<link rel="canonical" href="{{ include(template_from_string(viewBag.canonical_url))|default(this.page.id)|page }}">
+{% endif %}
+
+<!-- Open Graph -->
+{% if settings.enable_og %}
+	<meta property="og:type" content="{{ include(template_from_string(viewBag.og_type))  ?: 'website' }}" />
+	<meta property="og:title" content="{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}" />
+	<meta property="og:description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
+	<meta property="og:url" content="{{ url(include(template_from_string(viewBag.canonical_url))) }}" />
+	<meta property="og:locale" content="{{ settings.og_locale }}" />
+	{% if settings.site_image -%}
+		<meta property="og:image" content="{{
+			viewBag.og_ref_image ? url(include(template_from_string( viewBag.og_ref_image ))|media) : ''
+			| default( viewBag.og_image ? ( url(viewBag.og_image|media) ) : '' )
+			| default( settings.site_image ? ( url(settings.site_image|media) ) : '' )
+		}}" />
+	{% endif %}
+
+	<meta name="twitter:title" content="{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}">
+	<meta name="twitter:description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}">
+	{% if settings.site_image -%}
+		<meta name="twitter:image" content="{{
+			viewBag.og_ref_image ? url(include(template_from_string( viewBag.og_ref_image ))|media) : ''
+			| default( viewBag.og_image ? ( url(viewBag.og_image|media) ) : '' )
+			| default( settings.site_image ? ( url(settings.site_image|media) ) : '' )
+		}}" />
+	{% endif %}
+{% endif %}
+
+<!-- Extra meta -->
+{% if settings.extra_meta %}
+	{{ settings.extra_meta | raw }}
+{% endif %}
+<!-- EUGENE3993.SEO -->

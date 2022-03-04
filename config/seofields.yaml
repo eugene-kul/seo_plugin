@@ -1,0 +1,109 @@
+meta_title:
+  comment: Page title
+  label: eugene3993.seo::lang.config.meta_title
+  type: text
+  span: full
+  tab: Meta
+  attributes:
+    data-seo: title
+    data-counter: 1
+    data-min: 30
+    data-max: 60
+
+meta_description:
+  comment: Page description
+  label: eugene3993.seo::lang.config.meta_description
+  cssClass: char-counter
+  type: textarea
+  size: tiny
+  span: full
+  tab: Meta
+  attributes:
+    data-seo: description
+    data-counter: 1
+    data-min: 100
+    data-max: 160
+
+canonical_url:
+  label: Canonical URL
+  type: text
+  tab: Meta
+  span: full
+
+use_in_sitemap:
+  label: eugene3993.seo::lang.config.use_in_sitemap
+  default: true
+  type: switch
+  tab: Sitemap
+  span: auto
+
+model_class:
+  comment: eugene3993.seo::lang.config.model_class.comment
+  label: eugene3993.seo::lang.config.model_class.label
+  tab: Sitemap
+  type: text
+  span: auto
+
+priority:
+  comment: eugene3993.seo::lang.config.priority
+  type: dropdown
+  tab: Sitemap
+  span: auto
+  options:
+    1.0: '1.0'
+    0.9: '0.9'
+    0.8: '0.8'
+    0.7: '0.7'
+    0.6: '0.6'
+    0.5: '0.5'
+    0.4: '0.4'
+    0.3: '0.3'
+    0.2: '0.2'
+    0.1: '0.1'
+
+og_title:
+    label: og:title (dynamic)
+    tab: Open Graph
+    span: auto
+    comment: title
+    placeholder: eugene3993.seo::lang.config.og_title
+    attributes:
+        data-counter: 1
+        data-min: 30
+        data-max: 60
+        data-seo: title
+
+og_type:
+    label: og:type (dynamic)
+    tab: Open Graph
+    span: auto
+    placeholder: eugene3993.seo::lang.config.og_type
+
+og_description:
+    label: og:description (dynamic)
+    tab: Open Graph
+    type: textarea
+    size: tiny
+    span: auto
+    comment: description
+    placeholder: eugene3993.seo::lang.config.og_description
+    attributes:
+      data-counter: 1
+      data-min: 100
+      data-max: 160
+      data-seo: description
+
+og_image:
+    label: og:image
+    type: mediafinder
+    mode: image
+    tab: Open Graph
+    span: auto
+    commentAbove: eugene3993.seo::lang.config.og_image
+
+og_ref_image:
+    label: og:image (dynamic)
+    tab: Open Graph
+    span: auto
+    placeholder: "{{ example.image }}"
+    comment: eugene3993.seo::lang.config.og_ref_image

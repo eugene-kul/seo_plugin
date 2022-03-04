@@ -1,0 +1,35 @@
+<?php namespace Eugene3993\Seo\Components;
+
+use Cms\Classes\ComponentBase;
+
+use Request;
+use Eugene3993\Seo\Models\Settings;
+use Cms\Classes\Page;
+use Cms\Components\ViewBag;
+
+class Meta extends ComponentBase {
+
+    public $settings;
+
+    public function onRender() {
+        $this->settings = Settings::instance();
+        $thisPage = $this->page->page;
+
+        if (!$this->page['viewBag']) $this->page['viewBag'] = new ViewBag;
+
+        if (isset($this->page->apiBag['staticPage'])) { // static page
+            $this->page['viewBag'] = $this->page->controller->vars['page']->viewBag;
+
+        } else { // cms page
+            $this->page['viewBag']->setProperties(array_merge($this->page['viewBag']->getProperties(), $this->page->settings));
+        }
+
+    }
+
+    public function componentDetails() {
+        return [
+            'name' => 'META',
+            'description' => 'eugene3993.seo::lang.component.description'
+        ];
+    }
+}

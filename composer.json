@@ -1,0 +1,9 @@
+{
+    "name": "eugene3993/seo-plugin",
+    "type": "october-plugin",
+    "description": "Plugin for SEO markup and generation Sitemap.xml and Robots.txt",
+    "require": {
+        "VojtaSvoboda.TwigExtensions": "~1.0",
+        "composer/installers": "~1.0"
+    }
+}

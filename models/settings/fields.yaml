@@ -1,0 +1,75 @@
+tabs:
+    fields:
+        enable_sitemap:
+            tab: Settings
+            label: 'eugene3993.seo::lang.settings.enable_sitemap'
+            span: auto
+            type: switch
+            default: false
+        use_canonical:
+            tab: Settings
+            label: 'eugene3993.seo::lang.settings.use_canonical'
+            span: auto
+            type: switch
+            default: false
+        stock_description:
+            tab: Settings
+            label: 'eugene3993.seo::lang.settings.stock_description.label'
+            span: full
+            size: ''
+            type: textarea
+            commentAbove: 'eugene3993.seo::lang.settings.stock_description.comment'
+        enable_robots_txt:
+            tab: Robots.txt
+            label: 'eugene3993.seo::lang.settings.enable_robots_txt'
+            span: auto
+            type: switch
+            default: false
+        robots_txt:
+            tab: Robots.txt
+            label: robots.txt
+            size: giant
+            language: plain_text
+            span: full
+            trigger:
+                action: show
+                field: enable_robots_txt
+                condition: checked
+            type: codeeditor
+            default: "User-agent: *\r\nAllow: /\r\r\n Sitemap: $domain/sitemap.xml"
+        extra_meta:
+            label: 'eugene3993.seo::lang.settings.extra_meta'
+            size: huge
+            language: html
+            span: full
+            type: codeeditor
+            tab: Settings
+            default: "<!-- Additional meta tags -->"
+        enable_og:
+            label: 'eugene3993.seo::lang.settings.enable_og'
+            type: switch
+            tab: Open Graph
+            default: true
+            span: auto
+        og_locale:
+            label: 'og:locale'
+            trigger:
+                action: show
+                field: enable_og
+                condition: checked
+            type: text
+            default: ru_RU
+            span: auto
+            comment: 'Default is en_US'
+            tab: Open Graph
+        site_image:
+            label: 'Site image'
+            mode: image
+            span: auto
+            imageWidth: 400
+            trigger:
+                action: show
+                field: enable_og
+                condition: checked
+            type: mediafinder
+            tab: Open Graph
