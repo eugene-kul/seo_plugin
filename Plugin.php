@@ -80,7 +80,13 @@ class Plugin extends PluginBase {
                 !$user->hasPermission(["eugene3993.seo.sitemap"]) ? [
                     "use_in_sitemap",
                     "model_class",
+                    "changefreq",
                     "priority",
+                    "og_title",
+                    "og_type",
+                    "og_image",
+                    "og_ref_image",
+                    "og_description",
                 ] : [],
                 !$user->hasPermission(["eugene3993.seo.meta"]) ? [
                     "meta_title",
