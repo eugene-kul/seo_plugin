@@ -36,7 +36,7 @@ tabs:
                 field: enable_robots_txt
                 condition: checked
             type: codeeditor
-            default: "User-agent: *\r\nAllow: /\r\r\n Sitemap: $domain/sitemap.xml"
+            default: "User-agent: *\r\nAllow: /\r\r\nSitemap: $domain/sitemap.xml"
         extra_meta:
             label: 'eugene3993.seo::lang.settings.extra_meta'
             size: huge
