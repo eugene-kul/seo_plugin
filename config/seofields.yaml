@@ -32,7 +32,7 @@ canonical_url:
 
 use_in_sitemap:
   label: eugene3993.seo::lang.config.use_in_sitemap
-  default: true
+  default: false
   type: switch
   tab: Sitemap
   span: auto
@@ -45,10 +45,10 @@ model_class:
   span: auto
 
 priority:
-  comment: eugene3993.seo::lang.config.priority
+  label: eugene3993.seo::lang.config.priority
   type: dropdown
   tab: Sitemap
-  span: auto
+  span: left
   options:
     1.0: '1.0'
     0.9: '0.9'
@@ -60,6 +60,20 @@ priority:
     0.3: '0.3'
     0.2: '0.2'
     0.1: '0.1'
+
+changefreq:
+  label: eugene3993.seo::lang.config.changefreq
+  type: dropdown
+  tab: Sitemap
+  span: left
+  options:
+    always: 'always'
+    hourly: 'hourly'
+    daily: 'daily'
+    weekly: 'weekly'
+    monthly: 'monthly'
+    yearly: 'yearly'
+    never: 'never'
 
 og_title:
     label: og:title (dynamic)
