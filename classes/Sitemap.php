@@ -3,6 +3,7 @@
 use System\Classes\PluginManager;
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
+use Carbon\Carbon;
 
 class Sitemap {
 
@@ -17,7 +18,7 @@ class Sitemap {
         $models = [];
 
         foreach($pages as $page) {
-            if (!$page->use_in_sitemap ) continue;
+            if (!$page->use_in_sitemap) continue;
 
             $modelClass = str_replace(' ', '', $page['model_class']);
 
@@ -26,7 +27,6 @@ class Sitemap {
                     if(class_exists($itemClass)) {
                         $models = $itemClass::all();
                         foreach ($models as $model) {
-                            if (!$model->use_in_sitemap) continue;
                             $this->addItemToSet(Item::asCmsPage($page, $model));
                         }
                     }
@@ -76,6 +76,7 @@ class Sitemap {
         $urlElement = $this->makeUrlElement(
             $xml,
             $this_url, // make sure output is a valid url
+            $item->lastModified,
             $item->priority,
             $item->changefreq
         );
@@ -87,7 +88,7 @@ class Sitemap {
         return $urlSet;
     }
 
-    protected function makeUrlElement($xml, $pageUrl, $priority, $changefreq) {
+    protected function makeUrlElement($xml, $pageUrl, $lastModified, $priority, $changefreq) {
 
         if ($this->urlCount >= self::MAX_URLS) {
             return false;
@@ -97,7 +98,7 @@ class Sitemap {
 
         $url = $xml->createElement('url');
         $pageUrl && $url->appendChild($xml->createElement('loc', $pageUrl));
-        $url->appendChild($xml->createElement('lastmod', date("c")));
+        $lastModified && $url->appendChild($xml->createElement('lastmod', $lastModified));
         $changefreq && $url->appendChild($xml->createElement('changefreq', $changefreq));
         $priority && $url->appendChild($xml->createElement('priority', $priority));
 
@@ -112,10 +113,11 @@ class Sitemap {
 
 
 class Item {
-    public $loc, $priority, $changefreq;
+    public $loc, $lastModified, $priority, $changefreq;
 
-    function __construct($url=null, $priority=null, $changefreq=null) {
+    function __construct($url=null, $lastModified=null, $priority=null, $changefreq=null) {
         $this->loc = Self::replaceUrl($url);
+        $this->lastModified = $lastModified;
         $this->priority = $priority;
         $this->changefreq = $changefreq;
     }
@@ -145,16 +147,23 @@ class Item {
         if ($model) {
             return new Self(
                 url(Self::replaceUrl($page->url, $model)),
+                $model->updated_at ? $model->updated_at->format('c') : \Carbon\Carbon::createFromTimestamp($page->mtime)->format('c'),
                 $page->priority,
                 $page->changefreq
             );
         }
-        return new Self($page->url, $page->priority, $page->changefreq);
+        return new Self(
+            $page->url,
+            \Carbon\Carbon::createFromTimestamp($page->mtime)->format('c'),
+            $page->priority,
+            $page->changefreq
+        );
     }
 
     public static function asStaticPage($staticPage) {
         return new self(
             url($staticPage->url),
+            \Carbon\Carbon::createFromTimestamp($staticPage->mtime)->format('c'),
             $staticPage->priority,
             $staticPage->changefreq
         );
