@@ -113,6 +113,13 @@ class Plugin extends PluginBase {
                     "meta_title",
                     "meta_description",
                     "canonical_url",
+                    "robot_index",
+                    "robot_follow",
+                    "og_title",
+                    "og_type",
+                    "og_description",
+                    "og_image",
+                    "og_ref_image"
                 ] : [],
             )
         );
