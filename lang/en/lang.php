@@ -26,8 +26,8 @@
 
     'permissions' => [
         'labels' => [
-            'sitemap' => 'Sitemap and Open Graph tab',
-            'meta' => 'Meta Tab',
+            'sitemap' => 'Sitemap tab',
+            'meta' => 'Meta and Open Graph Tab',
             'settings' => 'Plugin Settings',
         ]
     ],
@@ -38,6 +38,16 @@
         'stock_description' => [
             'label' => 'Universal Meta tag description',
             'comment' => 'Used if the description meta tag is not filled in for the page',
+        ],
+        'site_name' => [
+            'label' => 'Name of the site/organization',
+            'label_pos' => 'Display the site name',
+            'prefix_pos' => 'At the start of the title',
+            'suffix_pos' => 'At the end of the title',
+            'nowhere_pos' => 'Disable',
+            'comment_pos' => 'Choose how the site name should be displayed in the Title header',
+            'separator' => 'Site name separator',
+            'separator_comment' => 'A symbol to separate the site name from the title, for example: Page Title | SiteName',
         ],
         'enable_robots_txt' => 'Use robots.txt',
         'enable_robots_meta' => 'Use robots meta tags',

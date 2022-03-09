@@ -44,30 +44,27 @@ class Plugin extends PluginBase {
     }
 
     public function register() {
+
         \Event::listen('backend.form.extendFields', function($widget) {
 
             if ($widget->isNested === false ) {
 
-                if (!($theme = Theme::getEditTheme()))
-                    throw new ApplicationException(Lang::get('cms::lang.theme.edit.not_found'));
+                if (!($theme = Theme::getEditTheme())) throw new ApplicationException(Lang::get('cms::lang.theme.edit.not_found'));
 
-                if (PluginManager::instance()->hasPlugin('RainLab.Pages')
-                    && $widget->model instanceof \RainLab\Pages\Classes\Page) {
-
+                if (PluginManager::instance()->hasPlugin('RainLab.Pages') && $widget->model instanceof \RainLab\Pages\Classes\Page) {
                     $widget->removeField('viewBag[meta_title]' );
                     $widget->removeField('viewBag[meta_description]');
-                    $widget->addFields( array_except($this->staticSeoFields(), [
+                    $widget->addFields(array_except($this->staticSeoFields(), [
                         'viewBag[model_class]',
                     ]), 'primary');
                 }
 
-                if (PluginManager::instance()->hasPlugin('RainLab.Blog')
-                    && $widget->model instanceof \RainLab\Blog\Models\Post) {
-                        $widget->addFields( array_except($this->blogSeoFields(), [
-                            'metadata[model_class]',
-                            'metadata[changefreq]',
-                            'metadata[priority]',
-                        ]), 'secondary');
+                if (PluginManager::instance()->hasPlugin('RainLab.Blog') && $widget->model instanceof \RainLab\Blog\Models\Post) {
+                    $widget->addFields(array_except($this->blogSeoFields(), [
+                        'metadata[model_class]',
+                        'metadata[changefreq]',
+                        'metadata[priority]',
+                    ]), 'secondary');
                 }
 
                 if (!$widget->model instanceof \Cms\Classes\Page) return;

@@ -1,19 +1,56 @@
 tabs:
     fields:
-        enable_sitemap:
-            tab: Settings
-            label: 'eugene3993.seo::lang.settings.enable_sitemap'
-            span: auto
-            type: switch
-            default: false
         use_canonical:
-            tab: Settings
+            tab: Meta
             label: 'eugene3993.seo::lang.settings.use_canonical'
             span: auto
             type: switch
             default: false
+        site_name:
+            tab: Meta
+            label: 'eugene3993.seo::lang.settings.site_name.label'
+            span: left
+            type: text
+        site_name_position:
+            tab: Meta
+            label: 'eugene3993.seo::lang.settings.site_name.label_pos'
+            options:
+                null: 'eugene3993.seo::lang.settings.site_name.nowhere_pos'
+                prefix: 'eugene3993.seo::lang.settings.site_name.prefix_pos'
+                suffix: 'eugene3993.seo::lang.settings.site_name.suffix_pos'
+            span: auto
+            type: radio
+            commentAbove: 'eugene3993.seo::lang.settings.site_name.comment_pos'
+        site_name_separator:
+            tab: Meta
+            label: 'eugene3993.seo::lang.settings.site_name.separator'
+            span: auto
+            type: text
+            max: 1
+            comment: 'eugene3993.seo::lang.settings.site_name.separator_comment'
+            placeholder: '|'
+        stock_description:
+            tab: Meta
+            label: 'eugene3993.seo::lang.settings.stock_description.label'
+            span: full
+            size: ''
+            type: textarea
+            commentAbove: 'eugene3993.seo::lang.settings.stock_description.comment'
+        extra_meta:
+            tab: Meta
+            label: 'eugene3993.seo::lang.settings.extra_meta'
+            size: huge
+            language: html
+            span: full
+            type: codeeditor
+        enable_sitemap:
+            tab: Sitemap
+            label: 'eugene3993.seo::lang.settings.enable_sitemap'
+            span: fill
+            type: switch
+            default: false
         sitemap_preview:
-            tab: Settings
+            tab: Sitemap
             type: partial
             path: $/eugene3993/seo/models/settings/_sitemap_preview.htm
             span: auto
@@ -21,27 +58,20 @@ tabs:
                 action: show
                 field: enable_sitemap
                 condition: checked
-        stock_description:
-            tab: Settings
-            label: 'eugene3993.seo::lang.settings.stock_description.label'
-            span: full
-            size: ''
-            type: textarea
-            commentAbove: 'eugene3993.seo::lang.settings.stock_description.comment'
         enable_robots_txt:
-            tab: Robots.txt
+            tab: Robots
             label: 'eugene3993.seo::lang.settings.enable_robots_txt'
             span: auto
             type: switch
             default: false
         enable_robots_meta:
-            tab: Robots.txt
+            tab: Robots
             label: 'eugene3993.seo::lang.settings.enable_robots_meta'
             span: auto
             type: switch
             default: false
         robots_preview:
-            tab: Robots.txt
+            tab: Robots
             type: partial
             path: $/eugene3993/seo/models/settings/_robots_preview.htm
             span: left
@@ -50,7 +80,7 @@ tabs:
                 field: enable_robots_txt
                 condition: checked
         robots_txt:
-            tab: Robots.txt
+            tab: Robots
             label: robots.txt
             size: giant
             language: plain_text
@@ -61,31 +91,14 @@ tabs:
                 condition: checked
             type: codeeditor
             default: "User-agent: *\r\nAllow: /\r\r\nSitemap: $domain/sitemap.xml"
-        extra_meta:
-            label: 'eugene3993.seo::lang.settings.extra_meta'
-            size: huge
-            language: html
-            span: full
-            type: codeeditor
-            tab: Settings
         enable_og:
+            tab: Open Graph
             label: 'eugene3993.seo::lang.settings.enable_og'
             type: switch
-            tab: Open Graph
             default: false
             span: auto
-        og_locale:
-            label: 'og:locale'
-            trigger:
-                action: show
-                field: enable_og
-                condition: checked
-            type: text
-            default: ru_RU
-            span: auto
-            comment: 'Default is en_US'
-            tab: Open Graph
         site_image:
+            tab: Open Graph
             label: 'Site image'
             mode: image
             span: auto
@@ -95,4 +108,14 @@ tabs:
                 field: enable_og
                 condition: checked
             type: mediafinder
+        og_locale:
             tab: Open Graph
+            label: 'og:locale'
+            trigger:
+                action: show
+                field: enable_og
+                condition: checked
+            type: text
+            default: ru_RU
+            span: auto
+            comment: 'Default is en_US'

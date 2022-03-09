@@ -3,7 +3,7 @@ meta_title:
   label: eugene3993.seo::lang.config.meta_title
   type: text
   span: full
-  tab: Meta
+  tab: cms::lang.editor.meta
   attributes:
     data-seo: title
     data-counter: 1
@@ -17,7 +17,7 @@ meta_description:
   type: textarea
   size: tiny
   span: full
-  tab: Meta
+  tab: cms::lang.editor.meta
   attributes:
     data-seo: description
     data-counter: 1
@@ -27,13 +27,13 @@ meta_description:
 canonical_url:
   label: Canonical URL
   type: text
-  tab: Meta
+  tab: cms::lang.editor.meta
   span: full
 
 robot_index:
   label: robots index
   type: balloon-selector
-  tab: Meta
+  tab: cms::lang.editor.meta
   options:
       index: index
       noindex: noindex
@@ -44,7 +44,7 @@ robot_index:
 robot_follow :
     label: robots follow
     type: balloon-selector
-    tab: Meta
+    tab: cms::lang.editor.meta
     options:
         follow: follow
         nofollow: nofollow

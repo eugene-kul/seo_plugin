@@ -26,8 +26,8 @@
 
     'permissions' => [
         'labels' => [
-            'sitemap' => 'Вкладка Sitemap и Open Graph',
-            'meta' => 'Вкладка Meta',
+            'sitemap' => 'Вкладка Sitemap',
+            'meta' => 'Вкладки Meta и Open Graph',
             'settings' => 'Настройки плагина',
         ]
     ],
@@ -38,6 +38,16 @@
         'stock_description' => [
             'label' => 'Универсальный Мета тег description',
             'comment' => 'Используется, если у страницы не заполнен мета тег description',
+        ],
+        'site_name' => [
+            'label' => 'Название сайта/организации',
+            'label_pos' => 'Отображать имя сайта',
+            'prefix_pos' => 'В начале заголовка',
+            'suffix_pos' => 'В конце заголовка',
+            'nowhere_pos' => 'Отключено',
+            'comment_pos' => 'Выберите, как название сайта должно отображаться в заголовке Title',
+            'separator' => 'Разделитель названия сайта',
+            'separator_comment' => 'Символ для отделения названия сайта от заголовка, например: Page Title | SiteName',
         ],
         'enable_robots_txt' => 'Использовать robots.txt',
         'enable_robots_meta' => 'Использовать meta теги robots',
