@@ -2,7 +2,7 @@ plugin:
     name: 'eugene3993.seo::lang.plugin.name'
     description: 'eugene3993.seo::lang.plugin.description'
     author: Eugene3993
-    icon: oc-icon-sitemap
+    icon: icon-sitemap
     homepage: ''
 permissions:
     eugene3993.seo.sitemap:
