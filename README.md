@@ -11,7 +11,7 @@ The plugin adds functionality to Standard Meta tags and generates Sitemap and Ro
 - Add the company name at the beginning or at the end of all headings
 - File generation sitemap.xml and robots.txt
 - Supports **CMS Pages**, **Static Pages** and **Blog posts**
-- Add a dynamic list of pages to a file Sitemap.xml. For example, pages created using the **Builder plugin** or **Pages plugin**
+- Add a dynamic list of pages to a file Sitemap.xml. For example, pages created using the **Builder plugin**
 - Generation of Open Graph micro markup
 - SEO meta tag fields support twig syntax
 - Insert third-party Meta tags or a third-party script into \<head>
@@ -36,7 +36,10 @@ You need to connect the components and insert them in the right place in the cod
 {% component 'META' %}
 ```
 
-For pages that have a 'blogPost' component, blog pages are generated based on the variable in the Sitemap tab and the variable 'published'.
+If you have a custom model that you want to generate the links from, add the full class name of your model in the "Sitemap" tab of the **CMS page**.
+If the page has the `blogPost` component, you don't need to set the Model class.
+
+**Important!**: Make sure that all the necessary parameters are enabled on the settings page.
 
 ---
 
