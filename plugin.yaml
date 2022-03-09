@@ -6,11 +6,11 @@ plugin:
     homepage: ''
 permissions:
     eugene3993.seo.sitemap:
-        tab: 'Seo plugin by Eugene3993'
+        tab: 'SEO Pro'
         label: 'eugene3993.seo::lang.permissions.labels.sitemap'
     eugene3993.seo.meta:
-        tab: 'Seo plugin by Eugene3993'
+        tab: 'SEO Pro'
         label: 'eugene3993.seo::lang.permissions.labels.meta'
     eugene3993.seo.settings:
-        tab: 'Seo plugin by Eugene3993'
+        tab: 'SEO Pro'
         label: 'eugene3993.seo::lang.permissions.labels.settings'
