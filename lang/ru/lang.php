@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'SEO (Sitemap/Robots/Open Graph)',
+        'name' => 'SEO Pro',
         'description' => 'Плагин для SEO разметки и генерации Sitemap.xml и Robots.txt'
     ],
 
@@ -16,41 +16,31 @@
             'comment' => 'Author\Plugin\Models\modelClass, можно указывать несколько через запятую'
         ],
         'priority' => 'Приоритет страницы',
+        'changefreq' => 'Частота изменения страницы',
         'og_title' => 'По умолчанию используется значение из перемнной META title',
         'og_type' => 'По умолчанию используется значение "website"',
         'og_description' => 'По умолчанию используется значение из переменной META description',
         'og_image' => 'По умолчанию используется значение из глобальных настроек',
-        'og_ref_image' => 'Переменная для og:image',
+        'og_ref_image' => 'Переменная twig для og:image',
     ],
 
     'permissions' => [
         'labels' => [
-            'sitemap' => 'Вкладки Sitemap и Open Graph',
+            'sitemap' => 'Вкладка Sitemap и Open Graph',
             'meta' => 'Вкладка Meta',
             'settings' => 'Настройки плагина',
         ]
     ],
 
     'settings' => [
-        'enable_robots_txt' => 'Использовать robots.txt',
-        'enable_robots_meta' => 'Использовать meta теги robots',
         'enable_sitemap' => 'Использовать sitemap.xml',
         'use_canonical' => 'Использовать тег Canonical',
-        'site_name' => [
-            'label' => 'Название сайта/организации',
-            'label_pos' => 'Отображать имя сайта',
-            'prefix_pos' => 'В начале заголовка',
-            'suffix_pos' => 'В конце заголовка',
-            'nowhere_pos' => 'Отключено',
-            'comment_pos' => 'Выберите, как название сайта должно отображаться в заголовке Title',
-            'separator' => 'Разделитель названия сайта',
-            'separator_comment' => 'Символ для отделения названия сайта от заголовка, например: Page Title | SiteName',
-        ],
         'stock_description' => [
             'label' => 'Универсальный Мета тег description',
             'comment' => 'Используется, если у страницы не заполнен мета тег description',
         ],
         'enable_robots_txt' => 'Использовать robots.txt',
+        'enable_robots_meta' => 'Использовать meta теги robots',
         'extra_meta' => 'Дополнительные теги в <head>',
         'enable_og' => 'Использовать Open Graph',
     ],

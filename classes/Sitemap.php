@@ -31,13 +31,27 @@ class Sitemap {
                         }
                     }
                 }
-            } else {$this->addItemToSet(Item::asCmsPage($page));}
+            } else {
+                if ($page->hasComponent('blogPost')) {
+                    $itemClass = "Rainlab\Blog\Models\Post";
+                    $models = $itemClass::all();
+                    foreach ($models as $model) {
+                        if (!(integer)$model['published']) continue;
+                        if (!(integer)$model->metadata['use_in_sitemap']) continue;
+                        $this->addItemToSet(Item::asPost($page, $model));
+                    }
+                }
+                else {
+                    $this->addItemToSet(Item::asCmsPage($page));
+                }
+            }
+
         }
 
         if (PluginManager::instance()->hasPlugin('RainLab.Pages')) {
             $staticPages = \RainLab\Pages\Classes\Page::listInTheme(Theme::getActiveTheme());
             foreach ($staticPages as $staticPage) {
-                if (! $staticPage->getViewBag()->property('use_in_sitemap')) continue;
+                if (!$staticPage->getViewBag()->property('use_in_sitemap')) continue;
                 $this->addItemToSet(Item::asStaticPage($staticPage));
             }
         }
@@ -111,7 +125,6 @@ class Sitemap {
     }
 }
 
-
 class Item {
     public $loc, $lastModified, $priority, $changefreq;
 
@@ -161,13 +174,20 @@ class Item {
     }
 
     public static function asStaticPage($staticPage) {
-        return new self(
+        return new Self(
             url($staticPage->url),
             \Carbon\Carbon::createFromTimestamp($staticPage->mtime)->format('c'),
             $staticPage->priority,
             $staticPage->changefreq
         );
     }
+
+    public static function asPost($page, $post) {
+        return new Self(
+            url(Self::replaceUrl($page->url, $post)),
+            $post->updated_at->format('c'),
+            $page->priority,
+            $page->changefreq
+        );
+    }
 }
-
-

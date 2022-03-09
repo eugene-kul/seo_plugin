@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
-        'name' => 'SEO (Sitemap/Robots/Open Graph)',
+        'name' => 'SEO Pro',
         'description' => 'Plugin for SEO markup and generation Sitemap.xml and Robots.txt'
     ],
 
@@ -16,11 +16,12 @@
             'comment' => 'Author\Plugin\Models\modelClass, you can specify several separated by commas'
         ],
         'priority' => 'Page priority',
+        'changefreq' => 'Page change frequency',
         'og_title' => 'By default, the value from the META title variable is used',
         'og_type' => 'The default value is "website"',
         'og_description' => 'By default, the value from the META description variable is used',
         'og_image' => 'By default, the value from the global settings is used',
-        'og_ref_image' => 'Variable for og:image',
+        'og_ref_image' => 'Twig variable for og:image',
     ],
 
     'permissions' => [
@@ -32,25 +33,14 @@
     ],
 
     'settings' => [
-        'enable_robots_txt' => 'Use Robots.txt',
-        'enable_robots_meta' => 'Use robots meta tags',
         'enable_sitemap' => 'Use sitemap.xml',
         'use_canonical' => 'Use the Canonical tag',
-        'site_name' => [
-            'label' => 'Name of the site/organization',
-            'label_pos' => 'Display the site name',
-            'prefix_pos' => 'At the start of the title',
-            'suffix_pos' => 'At the end of the title',
-            'nowhere_pos' => 'Disable',
-            'comment_pos' => 'Choose how the site name should be displayed in the Title header',
-            'separator' => 'Site name separator',
-            'separator_comment' => 'A symbol to separate the site name from the title, for example: Page Title | SiteName',
-        ],
         'stock_description' => [
             'label' => 'Universal Meta tag description',
             'comment' => 'Used if the description meta tag is not filled in for the page',
         ],
         'enable_robots_txt' => 'Use robots.txt',
+        'enable_robots_meta' => 'Use robots meta tags',
         'extra_meta' => 'Additional tags in <head>',
         'enable_og' => 'Use Open Graph',
     ],

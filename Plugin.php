@@ -2,8 +2,10 @@
 
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
+use Eugene3993\Seo\Classes\Helper;
 use System\Classes\PluginManager;
 use Cms\Classes\Theme;
+use Request;
 use Lang;
 
 class Plugin extends PluginBase {
@@ -15,6 +17,15 @@ class Plugin extends PluginBase {
     public function registerComponents() {
         return [
             'Eugene3993\Seo\Components\Meta' => 'META',
+        ];
+    }
+
+    public function registerMarkupTags() {
+        $helper = new Helper();
+        return [
+            'filters' => [
+                'url' => [$helper, 'url'],
+            ]
         ];
     }
 
@@ -50,6 +61,15 @@ class Plugin extends PluginBase {
                     ]), 'primary');
                 }
 
+                if (PluginManager::instance()->hasPlugin('RainLab.Blog')
+                    && $widget->model instanceof \RainLab\Blog\Models\Post) {
+                        $widget->addFields( array_except($this->blogSeoFields(), [
+                            'metadata[model_class]',
+                            'metadata[changefreq]',
+                            'metadata[priority]',
+                        ]), 'secondary');
+                }
+
                 if (!$widget->model instanceof \Cms\Classes\Page) return;
 
                 $widget->removeField('settings[meta_title]');
@@ -58,6 +78,12 @@ class Plugin extends PluginBase {
             }
 
         });
+    }
+
+    private function blogSeoFields() {
+        return collect($this->seoFields())->mapWithKeys(function($item, $key) {
+            return ["metadata[$key]" => $item];
+        })->toArray();
     }
 
     private function staticSeoFields() {
@@ -82,18 +108,11 @@ class Plugin extends PluginBase {
                     "model_class",
                     "changefreq",
                     "priority",
-                    "og_title",
-                    "og_type",
-                    "og_image",
-                    "og_ref_image",
-                    "og_description",
                 ] : [],
                 !$user->hasPermission(["eugene3993.seo.meta"]) ? [
                     "meta_title",
                     "meta_description",
                     "canonical_url",
-                    "robot_index",
-                    "robot_follow",
                 ] : [],
             )
         );

@@ -17,9 +17,17 @@ class Meta extends ComponentBase {
 
         if (!$this->page['viewBag']) $this->page['viewBag'] = new ViewBag;
 
-        if (isset($this->page->apiBag['staticPage'])) { // static page
-            $this->page['viewBag'] = $this->page->controller->vars['page']->viewBag;
+        if($this->page->page->hasComponent('blogPost')) // blog post
+        {
+            $post = $this->page['post'];
+            $this->page['viewBag']->setProperties(array_merge(
+              $this->page["viewBag"]->getProperties(),
+              $post->attributes,
+              $post->metadata ?: []
+            ));
 
+        } else if (isset($this->page->apiBag['staticPage'])) { // static page
+            $this->page['viewBag'] = $this->page->controller->vars['page']->viewBag;
         } else { // cms page
             $this->page['viewBag']->setProperties(array_merge($this->page['viewBag']->getProperties(), $this->page->settings));
         }

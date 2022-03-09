@@ -2,7 +2,7 @@
 
 The plugin adds functionality to Standard Meta tags and generates Sitemap and Robots files.
 
-> It supports **CMS Pages**, **Static Pages** and **Builder's pages records**.
+> It supports **CMS Pages**, **Static Pages**, **Blog posts** and **Builder's pages records**.
 
 ### Functionality:
 
@@ -10,10 +10,21 @@ The plugin adds functionality to Standard Meta tags and generates Sitemap and Ro
 - Close any page from indexing using robots meta tags
 - Add the company name at the beginning or at the end of all headings
 - File generation sitemap.xml and robots.txt
+- Supports **CMS Pages**, **Static Pages** and **Blog posts**
 - Add a dynamic list of pages to a file Sitemap.xml. For example, pages created using the **Builder plugin** or **Pages plugin**
 - Generation of Open Graph micro markup
-- Add twig variables to the Title and Description fields
+- SEO meta tag fields support twig syntax
 - Insert third-party Meta tags or a third-party script into \<head>
+
+Currently supported Open Graph tags:
+- `og:title` - defaults to _page meta\_title | page title_
+- `og:description` - defaults to _page meta\_description | site description_ in the Settings page
+- `og:image` - defaults to  _page image|site image_ in Settings page - Open Graph tab
+- `og:type` - defaults to "website"
+- `og:locale` - defaults to "en_US"
+- `twitter:title` - from `og:title`
+- `twitter:description` - from `og:description`
+- `twitter:image` - from `og:image`
 
 ---
 
@@ -24,6 +35,8 @@ You need to connect the components and insert them in the right place in the cod
 ```bash
 {% component 'META' %}
 ```
+
+For pages that have a 'blogPost' component, blog pages are generated based on the variable in the Sitemap tab and the variable 'published'.
 
 ---
 
