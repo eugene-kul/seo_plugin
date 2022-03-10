@@ -59,27 +59,6 @@ use_in_sitemap:
   tab: Sitemap
   span: full
 
-changefreq:
-  label: eugene3993.seo::lang.config.changefreq
-  type: dropdown
-  tab: Sitemap
-  span: auto
-  options:
-    always: 'always'
-    hourly: 'hourly'
-    daily: 'daily'
-    weekly: 'weekly'
-    monthly: 'monthly'
-    yearly: 'yearly'
-    never: 'never'
-
-model_class:
-  label: eugene3993.seo::lang.config.model_class.label
-  comment: eugene3993.seo::lang.config.model_class.comment
-  tab: Sitemap
-  type: text
-  span: auto
-
 priority:
   label: eugene3993.seo::lang.config.priority
   type: dropdown
@@ -96,6 +75,27 @@ priority:
     0.3: '0.3'
     0.2: '0.2'
     0.1: '0.1'
+
+model_class:
+  label: eugene3993.seo::lang.config.model_class.label
+  comment: eugene3993.seo::lang.config.model_class.comment
+  tab: Sitemap
+  type: text
+  span: auto
+
+changefreq:
+  label: eugene3993.seo::lang.config.changefreq
+  type: dropdown
+  tab: Sitemap
+  span: auto
+  options:
+    always: 'always'
+    hourly: 'hourly'
+    daily: 'daily'
+    weekly: 'weekly'
+    monthly: 'monthly'
+    yearly: 'yearly'
+    never: 'never'
 
 og_title:
     label: og:title (dynamic)
